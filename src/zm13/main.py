@@ -2,6 +2,8 @@ import datetime
 
 import typer
 
+import random
+
 from zm13 import mathtools
 
 app = typer.Typer()
@@ -72,7 +74,17 @@ def total_interest(m:int, r:float, n:int):
     """
     Compound Interest
     """
-    typer.echo(m * (1 + r) ** n) 
+    typer.echo(m * (1 + r) ** n)
+
+@app.command()
+def fortune():
+    """
+    Fortune
+    """
+    fortunes = ["大吉", "中吉", "小吉", "吉", "末吉", "凶", "大凶"]
+    weights = [5, 10, 15, 20, 20, 20, 10]
+    typer.echo(random.choices(fortunes, weights=weights, k=1)[0])
+
 
 
 
