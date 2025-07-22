@@ -6,6 +6,10 @@ import random
 
 from zm13 import mathtools
 
+from . import demo
+
+from . import new
+
 app = typer.Typer()
 
 
@@ -85,6 +89,13 @@ def fortune():
     weights = [5, 10, 15, 20, 20, 20, 10]
     typer.echo(random.choices(fortunes, weights=weights, k=1)[0])
 
+@app.command()
+def hello(name: str = "Shunsuke"):
+    typer.echo(demo.hello(name))
+
+@app.command()
+def reference_generater(pdf_path):
+    typer.echo(new.generate_apa_reference_from_pdf(pdf_path))
 
 
 
